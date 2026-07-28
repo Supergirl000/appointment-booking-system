@@ -7,6 +7,8 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        <x-theme-script />
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -14,15 +16,15 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased text-slate-900">
-        <div x-data="{ sidebarOpen: false }" class="min-h-screen bg-slate-100">
+    <body class="font-sans antialiased text-slate-900 transition-colors duration-300 dark:text-slate-100">
+        <div x-data="{ sidebarOpen: false }" class="min-h-screen bg-slate-100 transition-colors duration-300 dark:bg-slate-950">
             <x-sidebar />
 
             <div
                 x-cloak
                 x-show="sidebarOpen"
                 x-transition.opacity
-                class="fixed inset-0 z-40 bg-slate-950/50 lg:hidden"
+                class="fixed inset-0 z-40 bg-slate-950/70 lg:hidden"
                 @click="sidebarOpen = false"
             ></div>
 

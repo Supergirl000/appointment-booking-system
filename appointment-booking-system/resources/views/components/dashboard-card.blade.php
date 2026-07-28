@@ -14,11 +14,11 @@
     ];
 @endphp
 
-<div class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+<div class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition-colors duration-300 dark:border-slate-800 dark:bg-slate-900">
     <div class="flex items-start justify-between gap-4">
         <div>
-            <p class="text-sm font-medium text-slate-500">{{ $title }}</p>
-            <p class="mt-3 text-3xl font-bold tracking-tight text-slate-950">{{ $value }}</p>
+            <p class="text-sm font-medium text-slate-500 dark:text-slate-400">{{ $title }}</p>
+            <p class="mt-3 text-3xl font-bold tracking-tight text-slate-950 dark:text-white">{{ $value }}</p>
         </div>
 
         <span class="{{ $tones[$tone] ?? $tones['slate'] }} flex h-10 w-10 items-center justify-center rounded-lg text-sm font-bold">
@@ -27,6 +27,6 @@
     </div>
 
     @if ($detail)
-        <p class="mt-4 text-sm text-slate-500">{{ $detail }}</p>
+        <p class="mt-4 text-sm text-slate-500 dark:text-slate-400">{{ $detail }}</p>
     @endif
 </div>
