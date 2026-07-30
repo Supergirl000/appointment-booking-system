@@ -35,6 +35,11 @@
 
                 <main class="px-3 py-5 sm:px-6 sm:py-6 lg:px-8">
                     <div class="mx-auto max-w-7xl">
+                        @if (session('demo_restricted'))
+                            <div class="mb-6 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-semibold text-amber-800 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-200">
+                                {{ session('demo_restricted') }}
+                            </div>
+                        @endif
                         @isset($header)
                             <div class="mb-6">
                                 {{ $header }}

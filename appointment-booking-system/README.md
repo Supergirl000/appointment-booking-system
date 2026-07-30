@@ -16,7 +16,7 @@ No React, Vue, Bootstrap, payment gateway, or public booking frontend is include
 
 ## Features
 
-- Breeze authentication with login, register, password reset, logout, and profile management
+- Breeze authentication with login, password reset, logout, profile management, and public registration disabled for demo safety
 - Premium admin dashboard with live appointment/customer/service statistics
 - Services CRUD with search and status filtering
 - Customers CRUD with searchable customer records
@@ -32,8 +32,19 @@ No React, Vue, Bootstrap, payment gateway, or public booking frontend is include
 After running the seeders, use:
 
 ```text
-Email: admin@example.com
-Password: password
+Email: demo@lumiere.com
+Password: demo123
+```
+
+## Demo Safety
+
+The seeded Demo Admin account is marked with `is_demo = true`. Demo users can view the admin area and create or edit demo services, customers, and appointments, but cannot change profile credentials, update business settings, delete records, or perform destructive administration actions.
+
+For public demo hosting, use:
+
+```env
+APP_ENV=production
+APP_DEBUG=false
 ```
 
 ## Installation
