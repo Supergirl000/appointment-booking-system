@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
         <x-page-header
-            title="Create Service"
-            subtitle="Add a bookable service with duration, pricing, and availability status."
+            :title="__('Create Service')"
+            :subtitle="__('Add a bookable service with duration, pricing, and availability status.')"
         />
     </x-slot>
 
@@ -10,7 +10,7 @@
         @include('services.partials.form', [
             'service' => $service,
             'action' => route('services.store'),
-            'submitLabel' => 'Create Service',
+            'submitLabel' => __('Create Service'),
         ])
     </x-table-card>
 </x-app-layout>

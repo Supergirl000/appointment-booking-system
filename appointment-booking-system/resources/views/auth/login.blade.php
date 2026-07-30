@@ -19,8 +19,8 @@
         <div class="rounded-lg border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-950">
             <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                 <div>
-                    <p class="text-sm font-bold text-slate-950 dark:text-white">Demo Access</p>
-                    <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Use the public demo account to explore the booking admin safely.</p>
+                    <p class="text-sm font-bold text-slate-950 dark:text-white">{{ __('Demo Access') }}</p>
+                    <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">{{ __('Use the public demo account to explore the booking admin safely.') }}</p>
                 </div>
 
                 <button
@@ -28,17 +28,17 @@
                     class="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-950 focus:outline-none focus:ring-2 focus:ring-slate-300 focus:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-slate-600 dark:hover:bg-slate-800 dark:hover:text-white dark:focus:ring-slate-600 dark:focus:ring-offset-slate-950"
                     @click="useDemoAccount()"
                 >
-                    Use Demo Account
+                    {{ __('Use Demo Account') }}
                 </button>
             </div>
 
             <dl class="mt-4 grid gap-3 text-sm sm:grid-cols-2">
                 <div class="rounded-md bg-white px-3 py-2 dark:bg-slate-900">
-                    <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Email</dt>
+                    <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">{{ __('Email') }}</dt>
                     <dd class="mt-1 font-semibold text-slate-950 dark:text-white">demo@lumiere.com</dd>
                 </div>
                 <div class="rounded-md bg-white px-3 py-2 dark:bg-slate-900">
-                    <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Password</dt>
+                    <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">{{ __('Password') }}</dt>
                     <dd class="mt-1 font-semibold text-slate-950 dark:text-white">demo123</dd>
                 </div>
             </dl>

@@ -1,11 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
         <x-page-header
-            title="Customers"
-            subtitle="Manage customer contact details, preferences, and notes for future appointments."
+            :title="__('Customers')"
+            :subtitle="__('Manage customer contact details, preferences, and notes for future appointments.')"
         >
             <x-slot name="actions">
-                <x-primary-button :href="route('customers.create')">Create Customer</x-primary-button>
+                <x-primary-button :href="route('customers.create')">{{ __('Create Customer') }}</x-primary-button>
             </x-slot>
         </x-page-header>
     </x-slot>
@@ -19,11 +19,11 @@
 
         <x-table-card padded>
             <form method="GET" action="{{ route('customers.index') }}" class="grid gap-4 lg:grid-cols-[1fr_auto]">
-                <x-form-input label="Search" name="search" type="search" :value="$search" placeholder="Search by full name, phone, or email" />
+                <x-form-input label="Search" name="search" type="search" :value="$search" :placeholder="__('Search by full name, phone, or email')" />
 
                 <div class="flex flex-col gap-2 self-end sm:flex-row">
-                    <x-primary-button type="submit">Search</x-primary-button>
-                    <x-secondary-button :href="route('customers.index')">Reset</x-secondary-button>
+                    <x-primary-button type="submit">{{ __('Search') }}</x-primary-button>
+                    <x-secondary-button :href="route('customers.index')">{{ __('Reset') }}</x-secondary-button>
                 </div>
             </form>
         </x-table-card>
@@ -34,10 +34,10 @@
                     <table class="min-w-full divide-y divide-slate-200">
                         <thead class="bg-slate-50">
                             <tr>
-                                <th scope="col" class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">Customer</th>
-                                <th scope="col" class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">Phone</th>
-                                <th scope="col" class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">Email</th>
-                                <th scope="col" class="px-5 py-3 text-right text-xs font-semibold uppercase tracking-wide text-slate-500">Actions</th>
+                                <th scope="col" class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">{{ __('Customer') }}</th>
+                                <th scope="col" class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">{{ __('Phone') }}</th>
+                                <th scope="col" class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">{{ __('Email') }}</th>
+                                <th scope="col" class="px-5 py-3 text-right text-xs font-semibold uppercase tracking-wide text-slate-500">{{ __('Actions') }}</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-100 bg-white">
@@ -51,13 +51,13 @@
                                     <td class="whitespace-nowrap px-5 py-4 text-sm text-slate-600">{{ $customer->email ?: 'Not provided' }}</td>
                                     <td class="px-5 py-4">
                                         <div class="flex flex-wrap items-center justify-end gap-2">
-                                            <a href="{{ route('customers.show', $customer) }}" class="rounded-md px-2.5 py-1.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-950">View</a>
-                                            <a href="{{ route('customers.edit', $customer) }}" class="rounded-md px-2.5 py-1.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-950">Edit</a>
+                                            <a href="{{ route('customers.show', $customer) }}" class="rounded-md px-2.5 py-1.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-950">{{ __('View') }}</a>
+                                            <a href="{{ route('customers.edit', $customer) }}" class="rounded-md px-2.5 py-1.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-950">{{ __('Edit') }}</a>
                                             <form method="POST" action="{{ route('customers.destroy', $customer) }}" onsubmit="return confirm('Delete this customer?');">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="rounded-md px-2.5 py-1.5 text-sm font-semibold text-rose-600 transition hover:bg-rose-50">
-                                                    Delete
+                                                    {{ __('Delete') }}
                                                 </button>
                                             </form>
                                         </div>
@@ -74,9 +74,9 @@
             @else
                 <div class="p-6">
                     <x-empty-state
-                        title="No customers found"
-                        description="Create your first customer record or adjust the search term to find existing customers."
-                        action-text="Create Customer"
+                        :title="__('No customers found')"
+                        :description="__('Create your first customer record or adjust the search term to find existing customers.')"
+                        :action-text="__('Create Customer')"
                         :action-href="route('customers.create')"
                     />
                 </div>

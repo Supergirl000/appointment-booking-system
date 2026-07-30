@@ -2,13 +2,13 @@
 
 @php
     $links = [
-        ['label' => 'Dashboard', 'href' => route('dashboard'), 'active' => request()->routeIs('dashboard'), 'icon' => 'D'],
-        ['label' => 'Services', 'href' => route('services.index'), 'active' => request()->routeIs('services.*'), 'icon' => 'S'],
-        ['label' => 'Customers', 'href' => route('customers.index'), 'active' => request()->routeIs('customers.*'), 'icon' => 'C'],
-        ['label' => 'Appointments', 'href' => route('appointments.index'), 'active' => request()->routeIs('appointments.*'), 'icon' => 'A'],
-        ['label' => 'Calendar', 'href' => route('calendar.index'), 'active' => request()->routeIs('calendar.*'), 'icon' => 'M'],
-        ['label' => 'Reports', 'href' => route('reports.index'), 'active' => request()->routeIs('reports.*'), 'icon' => 'R'],
-        ['label' => 'Settings', 'href' => route('settings.index'), 'active' => request()->routeIs('settings.*'), 'icon' => 'G'],
+        ['label' => __('Dashboard'), 'href' => route('dashboard'), 'active' => request()->routeIs('dashboard'), 'icon' => 'D'],
+        ['label' => __('Services'), 'href' => route('services.index'), 'active' => request()->routeIs('services.*'), 'icon' => 'S'],
+        ['label' => __('Customers'), 'href' => route('customers.index'), 'active' => request()->routeIs('customers.*'), 'icon' => 'C'],
+        ['label' => __('Appointments'), 'href' => route('appointments.index'), 'active' => request()->routeIs('appointments.*'), 'icon' => 'A'],
+        ['label' => __('Calendar'), 'href' => route('calendar.index'), 'active' => request()->routeIs('calendar.*'), 'icon' => 'M'],
+        ['label' => __('Reports'), 'href' => route('reports.index'), 'active' => request()->routeIs('reports.*'), 'icon' => 'R'],
+        ['label' => __('Settings'), 'href' => route('settings.index'), 'active' => request()->routeIs('settings.*'), 'icon' => 'G'],
     ];
 @endphp
 
@@ -34,13 +34,13 @@
             </span>
             <span>
                 <span class="block text-base font-bold tracking-tight text-slate-950 dark:text-white">Appointly</span>
-                <span class="block text-xs font-medium text-slate-500 dark:text-slate-400">Booking Admin</span>
+                <span class="block text-xs font-medium text-slate-500 dark:text-slate-400">{{ __('Booking Admin') }}</span>
             </span>
         </a>
 
         @if ($mobile)
             <button type="button" class="rounded-lg p-2 text-slate-500 transition hover:bg-slate-200 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white" @click="sidebarOpen = false">
-                <span class="sr-only">Close sidebar</span>
+                <span class="sr-only">{{ __('Close sidebar') }}</span>
                 <span class="block h-5 w-5 text-center text-xl leading-4">&times;</span>
             </button>
         @endif
@@ -56,7 +56,7 @@
     </nav>
 
     <div class="mt-auto rounded-lg border border-slate-200 bg-white p-4 shadow-sm transition-colors duration-300 dark:border-slate-800 dark:bg-slate-900">
-        <p class="text-sm font-semibold text-slate-950 dark:text-white">Booking Workspace</p>
-        <p class="mt-1 text-xs leading-5 text-slate-500 dark:text-slate-400">Manage bookings, reports, and business configuration from one clean workspace.</p>
+        <p class="text-sm font-semibold text-slate-950 dark:text-white">{{ __('Booking Workspace') }}</p>
+        <p class="mt-1 text-xs leading-5 text-slate-500 dark:text-slate-400">{{ __('Manage bookings, reports, and business configuration from one clean workspace.') }}</p>
     </div>
 </aside>

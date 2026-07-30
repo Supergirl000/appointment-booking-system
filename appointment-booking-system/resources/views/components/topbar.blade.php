@@ -2,23 +2,24 @@
     <div class="flex h-16 items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <div class="flex items-center gap-3">
             <button type="button" class="rounded-lg p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white lg:hidden" @click="sidebarOpen = true">
-                <span class="sr-only">Open sidebar</span>
+                <span class="sr-only">{{ __('Open sidebar') }}</span>
                 <span class="block h-0.5 w-5 bg-current"></span>
                 <span class="mt-1.5 block h-0.5 w-5 bg-current"></span>
                 <span class="mt-1.5 block h-0.5 w-5 bg-current"></span>
             </button>
 
             <div>
-                <p class="text-sm font-semibold text-slate-950 dark:text-white">Admin Dashboard</p>
-                <p class="hidden text-xs text-slate-500 dark:text-slate-400 sm:block">Manage bookings with a clean operational workspace.</p>
+                <p class="text-sm font-semibold text-slate-950 dark:text-white">{{ __('Admin Dashboard') }}</p>
+                <p class="hidden text-xs text-slate-500 dark:text-slate-400 sm:block">{{ __('Manage bookings with a clean operational workspace.') }}</p>
             </div>
         </div>
 
         <div class="flex items-center gap-3">
+            <x-language-switcher />
             <x-theme-toggle />
 
             <a href="{{ route('appointments.create') }}" class="hidden rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-950 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-slate-600 dark:hover:bg-slate-800 dark:hover:text-white sm:inline-flex">
-                New Appointment
+                {{ __('New Appointment') }}
             </a>
 
             <x-dropdown align="right" width="48">

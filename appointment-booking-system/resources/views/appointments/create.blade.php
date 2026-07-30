@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
         <x-page-header
-            title="Create Appointment"
-            subtitle="Schedule a customer with a service, optional staff member, date, time, and status."
+            :title="__('Create Appointment')"
+            :subtitle="__('Schedule a customer with a service, optional staff member, date, time, and status.')"
         />
     </x-slot>
 
@@ -14,7 +14,7 @@
             'staffMembers' => $staffMembers,
             'statuses' => $statuses,
             'action' => route('appointments.store'),
-            'submitLabel' => 'Create Appointment',
+            'submitLabel' => __('Create Appointment'),
         ])
     </x-table-card>
 </x-app-layout>

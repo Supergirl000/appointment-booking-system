@@ -68,7 +68,7 @@ class AppointmentController extends Controller
 
         return redirect()
             ->route('appointments.show', $appointment)
-            ->with('success', 'Appointment created successfully.');
+            ->with('success', __('Appointment created successfully.'));
     }
 
     /**
@@ -101,7 +101,7 @@ class AppointmentController extends Controller
 
         return redirect()
             ->route('appointments.show', $appointment)
-            ->with('success', 'Appointment updated successfully.');
+            ->with('success', __('Appointment updated successfully.'));
     }
 
     /**
@@ -113,7 +113,7 @@ class AppointmentController extends Controller
 
         return redirect()
             ->route('appointments.index')
-            ->with('success', 'Appointment deleted successfully.');
+            ->with('success', __('Appointment deleted successfully.'));
     }
 
     private function formOptions(): array

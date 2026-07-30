@@ -41,7 +41,7 @@ class SettingsController extends Controller
 
         return redirect()
             ->route('settings.index')
-            ->with('success', 'Business settings updated successfully.');
+            ->with('success', __('Business settings updated successfully.'));
     }
 
     private function settings(): array

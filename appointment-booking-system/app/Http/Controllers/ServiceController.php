@@ -55,7 +55,7 @@ class ServiceController extends Controller
 
         return redirect()
             ->route('services.show', $service)
-            ->with('success', 'Service created successfully.');
+            ->with('success', __('Service created successfully.'));
     }
 
     /**
@@ -83,7 +83,7 @@ class ServiceController extends Controller
 
         return redirect()
             ->route('services.show', $service)
-            ->with('success', 'Service updated successfully.');
+            ->with('success', __('Service updated successfully.'));
     }
 
     /**
@@ -95,6 +95,6 @@ class ServiceController extends Controller
 
         return redirect()
             ->route('services.index')
-            ->with('success', 'Service deleted successfully.');
+            ->with('success', __('Service deleted successfully.'));
     }
 }

@@ -1,11 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
         <x-page-header
-            title="Calendar"
-            subtitle="Review appointments by month with quick filters for status, staff, and service."
+            :title="__('Calendar')"
+            :subtitle="__('Review appointments by month with quick filters for status, staff, and service.')"
         >
             <x-slot name="actions">
-                <x-primary-button :href="route('appointments.create')">New Appointment</x-primary-button>
+                <x-primary-button :href="route('appointments.create')">{{ __('New Appointment') }}</x-primary-button>
             </x-slot>
         </x-page-header>
     </x-slot>
@@ -17,51 +17,51 @@
             'service_id' => $serviceId,
         ], fn ($value) => filled($value));
 
-        $weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+        $weekdays = collect(range(0, 6))->map(fn ($offset) => $month->copy()->startOfWeek()->addDays($offset)->translatedFormat('D'));
     @endphp
 
     <div class="space-y-5">
         <x-table-card padded>
             <div class="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
                 <div>
-                    <p class="text-sm font-medium text-slate-500">Viewing Month</p>
-                    <h2 class="mt-1 text-2xl font-bold tracking-tight text-slate-950">{{ $month->format('F Y') }}</h2>
+                    <p class="text-sm font-medium text-slate-500 dark:text-slate-400">{{ __('Viewing Month') }}</p>
+                    <h2 class="mt-1 text-2xl font-bold tracking-tight text-slate-950">{{ $month->translatedFormat('F Y') }}</h2>
                 </div>
 
                 <div class="flex flex-wrap gap-2">
-                    <x-secondary-button :href="route('calendar.index', array_merge($filterQuery, ['month' => $previousMonth]))">Previous</x-secondary-button>
-                    <x-primary-button :href="route('calendar.index', array_merge($filterQuery, ['month' => $currentMonth]))">Today</x-primary-button>
-                    <x-secondary-button :href="route('calendar.index', array_merge($filterQuery, ['month' => $nextMonth]))">Next</x-secondary-button>
+                    <x-secondary-button :href="route('calendar.index', array_merge($filterQuery, ['month' => $previousMonth]))">{{ __('Previous') }}</x-secondary-button>
+                    <x-primary-button :href="route('calendar.index', array_merge($filterQuery, ['month' => $currentMonth]))">{{ __('Today') }}</x-primary-button>
+                    <x-secondary-button :href="route('calendar.index', array_merge($filterQuery, ['month' => $nextMonth]))">{{ __('Next') }}</x-secondary-button>
                 </div>
             </div>
 
             <form method="GET" action="{{ route('calendar.index') }}" class="mt-5 grid gap-4 lg:grid-cols-[1fr_1fr_1fr_auto]">
                 <input type="hidden" name="month" value="{{ $month->format('Y-m') }}">
 
-                <x-form-select label="Status" name="status">
-                    <option value="">All statuses</option>
+                <x-form-select :label="__('Status')" name="status">
+                    <option value="">{{ __('All statuses') }}</option>
                     @foreach ($statuses as $option)
-                        <option value="{{ $option }}" @selected($status === $option)>{{ ucfirst($option) }}</option>
+                        <option value="{{ $option }}" @selected($status === $option)>{{ __($option) }}</option>
                     @endforeach
                 </x-form-select>
 
-                <x-form-select label="Staff" name="staff_id">
-                    <option value="">All staff</option>
+                <x-form-select :label="__('Staff')" name="staff_id">
+                    <option value="">{{ __('All staff') }}</option>
                     @foreach ($staffMembers as $staff)
                         <option value="{{ $staff->id }}" @selected((string) $staffId === (string) $staff->id)>{{ $staff->name }}</option>
                     @endforeach
                 </x-form-select>
 
-                <x-form-select label="Service" name="service_id">
-                    <option value="">All services</option>
+                <x-form-select :label="__('Service')" name="service_id">
+                    <option value="">{{ __('All services') }}</option>
                     @foreach ($services as $service)
                         <option value="{{ $service->id }}" @selected((string) $serviceId === (string) $service->id)>{{ $service->name }}</option>
                     @endforeach
                 </x-form-select>
 
                 <div class="flex flex-col gap-2 self-end sm:flex-row">
-                    <x-primary-button type="submit">Apply</x-primary-button>
-                    <x-secondary-button :href="route('calendar.index', ['month' => $month->format('Y-m')])">Reset</x-secondary-button>
+                    <x-primary-button type="submit">{{ __('Apply') }}</x-primary-button>
+                    <x-secondary-button :href="route('calendar.index', ['month' => $month->format('Y-m')])">{{ __('Reset') }}</x-secondary-button>
                 </div>
             </form>
         </x-table-card>
@@ -95,7 +95,7 @@
                                 'text-slate-400' => ! $isCurrentMonth,
                                 'text-white' => $isToday,
                             ])>
-                                <span class="lg:hidden">{{ $day->format('D, ') }}</span>{{ $day->format('j') }}
+                                <span class="lg:hidden">{{ $day->translatedFormat('D, ') }}</span>{{ $day->format('j') }}
                             </p>
 
                             <span @class([
@@ -138,7 +138,7 @@
                                     'rounded-md border border-dashed px-3 py-2 text-xs',
                                     'border-slate-200 text-slate-400' => ! $isToday,
                                     'border-white/20 text-white/60' => $isToday,
-                                ])>No appointments</p>
+                                ])>{{ __('No appointments') }}</p>
                             @endforelse
                         </div>
                     </article>

@@ -52,7 +52,7 @@ class CustomerController extends Controller
 
         return redirect()
             ->route('customers.show', $customer)
-            ->with('success', 'Customer created successfully.');
+            ->with('success', __('Customer created successfully.'));
     }
 
     /**
@@ -80,7 +80,7 @@ class CustomerController extends Controller
 
         return redirect()
             ->route('customers.show', $customer)
-            ->with('success', 'Customer updated successfully.');
+            ->with('success', __('Customer updated successfully.'));
     }
 
     /**
@@ -92,6 +92,6 @@ class CustomerController extends Controller
 
         return redirect()
             ->route('customers.index')
-            ->with('success', 'Customer deleted successfully.');
+            ->with('success', __('Customer deleted successfully.'));
     }
 }

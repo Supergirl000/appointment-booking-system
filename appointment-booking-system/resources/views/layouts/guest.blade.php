@@ -18,7 +18,8 @@
     </head>
     <body class="font-sans text-gray-900 antialiased transition-colors duration-300 dark:text-slate-100">
         <div class="relative flex min-h-screen flex-col items-center bg-gray-100 pt-6 transition-colors duration-300 dark:bg-slate-950 sm:justify-center sm:pt-0">
-            <div class="absolute right-4 top-4">
+            <div class="absolute right-4 top-4 flex items-center gap-2">
+                <x-language-switcher />
                 <x-theme-toggle />
             </div>
 

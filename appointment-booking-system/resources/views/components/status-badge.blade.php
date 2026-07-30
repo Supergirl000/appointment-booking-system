@@ -12,5 +12,5 @@
 @endphp
 
 <span {{ $attributes->merge(['class' => $tone.' inline-flex rounded-full px-2.5 py-1 text-xs font-semibold capitalize ring-1']) }}>
-    {{ $slot->isEmpty() ? $status : $slot }}
+    {{ $slot->isEmpty() ? __($status) : $slot }}
 </span>

@@ -29,6 +29,6 @@ class PreventDemoRestrictedActions
     {
         return redirect()
             ->back(fallback: route('dashboard'))
-            ->with('demo_restricted', self::MESSAGE);
+            ->with('demo_restricted', __(self::MESSAGE));
     }
 }

@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
         <x-page-header
-            title="Edit Service"
-            subtitle="Update service details, pricing, duration, and availability."
+            :title="__('Edit Service')"
+            :subtitle="__('Update service details, pricing, duration, and availability.')"
         />
     </x-slot>
 
@@ -11,7 +11,7 @@
             'service' => $service,
             'action' => route('services.update', $service),
             'method' => 'PUT',
-            'submitLabel' => 'Update Service',
+            'submitLabel' => __('Update Service'),
         ])
     </x-table-card>
 </x-app-layout>

@@ -13,12 +13,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('guest')->group(function () {
     Route::get('register', fn () => redirect()
         ->route('login')
-        ->with('demo_restricted', 'Public registration is disabled for this demo.'))
+        ->with('demo_restricted', __('Public registration is disabled for this demo.')))
         ->name('register');
 
     Route::post('register', fn () => redirect()
         ->route('login')
-        ->with('demo_restricted', 'Public registration is disabled for this demo.'));
+        ->with('demo_restricted', __('Public registration is disabled for this demo.')));
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
