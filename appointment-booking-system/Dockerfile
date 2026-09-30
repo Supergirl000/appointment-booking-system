@@ -4,56 +4,55 @@ FROM node:22-bookworm-slim AS frontend
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+COPY package*.json ./
 
 RUN npm ci
 
 COPY . .
 
-# Build production CSS and JavaScript
 RUN npm run build
 
 
-# Stage 2: Laravel / PHP runtime
+# Stage 2: Laravel runtime
 FROM php:8.3-cli-bookworm
 
 WORKDIR /var/www/html
 
-# Install system libraries and PHP extensions
-RUN apt-get update && apt-get install -y \
-    git \
-    unzip \
-    libzip-dev \
-    libonig-dev \
-    libsqlite3-dev \
-    && docker-php-ext-install \
-    pdo_mysql \
-    pdo_sqlite \
-    sqlite3 \
-    mbstring \
-    zip \
+# Install system dependencies
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        git \
+        unzip \
+        libzip-dev \
+        libonig-dev \
+        libsqlite3-dev \
+    && docker-php-ext-install -j1 \
+        pdo_mysql \
+        pdo_sqlite \
+        mbstring \
+        zip \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Copy Laravel project
+# Copy Laravel files
 COPY . .
 
-# Remove any local Vite development marker
+# Remove Vite development marker
 RUN rm -f public/hot
 
-# Copy compiled production assets
+# Copy compiled frontend assets
 COPY --from=frontend /app/public/build ./public/build
 
-# Install production PHP dependencies
+# Install PHP dependencies
 RUN composer install \
     --no-dev \
     --optimize-autoloader \
     --no-interaction \
     --no-progress
 
-# Prepare Laravel writable directories
+# Prepare directories
 RUN mkdir -p \
     database \
     storage/framework/cache/data \
@@ -63,7 +62,7 @@ RUN mkdir -p \
     bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache database
 
-# Production environment
+# Production configuration
 ENV APP_ENV=production
 ENV APP_DEBUG=false
 ENV PORT=8080
