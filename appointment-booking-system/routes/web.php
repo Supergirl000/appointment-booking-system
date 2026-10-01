@@ -9,8 +9,6 @@ use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\LanguageController;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,37 +17,6 @@ Route::get('/', function () {
 
 Route::get('/language/{locale}', [LanguageController::class, 'switch'])->name('language.switch');
 
-Route::get('/debug-demo', function () {
-    $demoUser = User::where('email', 'demo@lumiere.com')->first();
-    $sessionCounter = (int) session('debug_demo_counter', 0) + 1;
-
-    session([
-        'debug_demo_counter' => $sessionCounter,
-        'debug_demo_last_seen_at' => now()->toIso8601String(),
-    ]);
-
-    return response()->json([
-        'demo_user_exists' => (bool) $demoUser,
-        'demo_password_matches' => $demoUser ? Hash::check('AppointlyDemo2026!', $demoUser->password) : false,
-        'demo_is_demo' => (bool) $demoUser?->is_demo,
-        'demo_email_verified' => (bool) $demoUser?->email_verified_at,
-        'auth_check' => auth()->check(),
-        'session_driver' => config('session.driver'),
-        'session_domain' => config('session.domain'),
-        'session_secure' => config('session.secure'),
-        'session_same_site' => config('session.same_site'),
-        'session_path' => config('session.path'),
-        'session_cookie' => config('session.cookie'),
-        'session_id_present' => filled(session()->getId()),
-        'session_counter' => $sessionCounter,
-        'session_folder_exists' => is_dir(storage_path('framework/sessions')),
-        'session_folder_writable' => is_writable(storage_path('framework/sessions')),
-        'app_url' => config('app.url'),
-        'request_secure' => request()->isSecure(),
-        'request_host' => request()->getHost(),
-        'request_scheme' => request()->getScheme(),
-    ]);
-})->name('debug.demo');
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
