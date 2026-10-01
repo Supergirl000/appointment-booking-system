@@ -17,7 +17,7 @@ class DemoUserSeeder extends Seeder
             'email' => 'demo@lumiere.com',
         ], [
             'name' => 'Demo Admin',
-            'password' => Hash::make('demo123'),
+            'password' => Hash::make('AppointlyDemo2026!'),
             'is_demo' => true,
         ]);
 

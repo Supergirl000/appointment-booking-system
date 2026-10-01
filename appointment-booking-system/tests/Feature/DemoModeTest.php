@@ -24,7 +24,7 @@ class DemoModeTest extends TestCase
 
         $this->post(route('login'), [
             'email' => 'demo@lumiere.com',
-            'password' => 'demo123',
+            'password' => 'AppointlyDemo2026!',
         ])->assertRedirect(route('dashboard', absolute: false));
 
         $this->assertAuthenticatedAs(User::where('email', 'demo@lumiere.com')->first());
@@ -236,7 +236,7 @@ class DemoModeTest extends TestCase
             ->assertOk()
             ->assertSee('Demo Access')
             ->assertSee('demo@lumiere.com')
-            ->assertSee('demo123')
+            ->assertSee('AppointlyDemo2026!')
             ->assertSee('Use Demo Account')
             ->assertDontSee('PRIVATE_ADMIN_PASSWORD');
     }

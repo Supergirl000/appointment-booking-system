@@ -21,7 +21,7 @@
         x-data="{
             useDemoAccount() {
                 $refs.email.value = 'demo@lumiere.com';
-                $refs.password.value = 'demo123';
+                $refs.password.value = 'AppointlyDemo2026!';
                 $refs.email.dispatchEvent(new Event('input', { bubbles: true }));
                 $refs.password.dispatchEvent(new Event('input', { bubbles: true }));
             }

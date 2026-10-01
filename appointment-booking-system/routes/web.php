@@ -30,7 +30,7 @@ Route::get('/debug-demo', function () {
 
     return response()->json([
         'demo_user_exists' => (bool) $demoUser,
-        'demo_password_matches' => $demoUser ? Hash::check('demo123', $demoUser->password) : false,
+        'demo_password_matches' => $demoUser ? Hash::check('AppointlyDemo2026!', $demoUser->password) : false,
         'demo_is_demo' => (bool) $demoUser?->is_demo,
         'demo_email_verified' => (bool) $demoUser?->email_verified_at,
         'auth_check' => auth()->check(),

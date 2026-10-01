@@ -33,7 +33,7 @@ After running the seeders, use:
 
 ```text
 Email: demo@lumiere.com
-Password: demo123
+Password: AppointlyDemo2026!
 ```
 
 ## Demo Safety
